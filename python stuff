@@ -2,7 +2,7 @@
 import random
 import time
 print('This program ends when the random number hits 1,000')
-a=input("Press Enter to start")
+a=input("Press Enter to start\n")
 rand = random.randint(0,1000)
 while rand != 1000:
   rand = random.randint(0,1000)
@@ -14,7 +14,7 @@ import random
 import time
 import string
 print('This program prints 1000 random lowercase charachers and spaces')
-a=input("Press Enter to start")
+a=input("Press Enter to start\n")
 alpha=(list(string.ascii_lowercase))
 alpha.append(" ")
 n=0
