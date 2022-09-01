@@ -12,9 +12,11 @@ while rand != 1000:
 #random character thingy
 import random
 import time
+import string
 print('This program prints 1000 random lowercase charachers and spaces')
 a=input("Press Enter to start")
-alpha=['a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k', 'l', 'm', 'n', 'o', 'p', 'q', 'r', 's', 't', 'u', 'v', 'w', 'x', 'y', 'z',' ']
+alpha=(list(string.ascii_lowercase))
+alpha.append(" ")
 n=0
 while n<=1000:
   print(random.choice(alpha),end="")
