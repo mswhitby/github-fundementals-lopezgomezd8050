@@ -1,0 +1,9 @@
+import random
+import time
+print('This program ends when the random number hits 1,000')
+a=input("Press Enter to start\n")
+rand = random.randint(0,1000)
+while rand != 1000:
+  rand = random.randint(0,1000)
+  print(rand)
+  time.sleep(.01)
