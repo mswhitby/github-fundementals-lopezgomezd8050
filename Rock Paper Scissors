@@ -1,0 +1,52 @@
+import random
+import time
+rpsList=["R","P","S"]
+rpsHuman=None
+rpsRobot=random.choice(rpsList)
+rpsHumanPrint=None
+rpsRobotPrint=None
+
+while rpsHuman not in ("R", "P", "S"):
+  rpsHuman=input("Rock(R) Paper(P) Scissors(S):").upper()
+
+if rpsHuman == "R":
+  rpsHumanPrint = "Rock"
+elif rpsHuman == "P":
+  rpsHumanPrint = "Paper"
+elif rpsHuman == "S":
+  rpsHumanPrint = "Scissors"
+print("\nYou chose "+rpsHumanPrint+"!")
+
+time.sleep(0.5)
+
+if rpsRobot == "R":
+  rpsRobotPrint = "Rock"
+elif rpsRobot == "P":
+  rpsRobotPrint = "Paper"
+elif rpsRobot == "S":
+  rpsRobotPrint = "Scissors"
+print("The robot chose "+rpsRobotPrint+"!")
+
+time.sleep(0.5)
+
+if rpsHuman == "R":
+  if rpsRobot == "R":
+    print("You Tied!")  
+  elif rpsRobot == "P":
+    print("You Lost!")  
+  elif rpsRobot == "S":
+    print("You Won!")  
+elif rpsHuman == "P":
+  if rpsRobot == "R":
+    print("You Won!")  
+  elif rpsRobot == "P":
+    print("You Tied!")  
+  elif rpsRobot == "S":
+    print("You Lost!")  
+elif rpsHuman == "S":
+  if rpsRobot == "R":
+    print("You Lost!")  
+  elif rpsRobot == "P":
+    print("You Won!")  
+  elif rpsRobot == "S":
+    print("You Tied!")  
