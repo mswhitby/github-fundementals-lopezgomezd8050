@@ -1,0 +1,17 @@
+def oddishEvenish(num):
+  numList=[]
+  num=str(num)
+  
+  for i in num:
+    i=int(i)
+    numList.append(i)
+  numTotal=sum(numList)
+  
+  if numTotal%2 == 1:
+    return("Oddish")
+  elif numTotal%2 == 0:
+    return("Evenish")
+
+
+a=oddishEvenish(63)
+print(a)
