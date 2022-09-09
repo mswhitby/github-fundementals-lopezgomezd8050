@@ -1,0 +1,12 @@
+def dateFormater(date):
+  dateLen=len(date)
+  if dateLen != 10:
+    raise Exception("Incorrect Date Format")
+  year=date[-4:]
+  month=date[:2]
+  dayCrude=date[:5]
+  day=dayCrude[3:]
+  return(year+day+month)
+  
+a=dateFormater("12/31/2099")
+print(a)
