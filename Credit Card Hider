@@ -1,0 +1,6 @@
+def cardHider(cc):
+  cc=cc[-4:]
+  cc="**********"+cc
+  return cc
+a=cardHider("35123413355523")
+print(a)
