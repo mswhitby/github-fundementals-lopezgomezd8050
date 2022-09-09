@@ -1,0 +1,5 @@
+def hourToSeconds(hour):
+  hour=hour*3600
+  return hour
+a=hourToSeconds(5)
+print(a)
