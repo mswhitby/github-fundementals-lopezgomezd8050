@@ -1,0 +1,9 @@
+import time
+import random
+
+listRotater=[1,2,3,4,5,6]
+
+for listlen in listRotater:
+  print(listlen)
+  
+print(len(listRotater))
