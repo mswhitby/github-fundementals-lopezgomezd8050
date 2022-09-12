@@ -1,0 +1,12 @@
+import time
+import random
+
+listRotater=[1,2,3,4,5,6]
+#random.shuffle(listRotater)
+print(listRotater)
+while True:
+  listPlaceholder=listRotater[0]
+  listRotater.pop(0)
+  listRotater.append(listPlaceholder)
+  print(listRotater[5])
+  time.sleep(1)
