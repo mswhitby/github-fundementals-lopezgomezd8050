@@ -7,19 +7,21 @@ userAttack=0
 userMage=0
 userRange=0
 userInv=[]
+userStats=[]
 
 enemyHealth=0
 enemyAttack=0
 enemyMage=0
 enemyRange=0
 enemyInv=[]
+enemyStats=[]
 
 def enter():
   input("Press enter to continue.")
 def clr():
   os.system('cls' if os.name=='nt' else 'clear')
 def enterclr():
-  input("Press enter to continue.")
+  input("Press enter to continue to next screen.")
   os.system('cls' if os.name=='nt' else 'clear')
 def question(question,exp1,exp2,exp3):
   ans="ans"
@@ -31,9 +33,13 @@ def yesNo(question):
   while ans not in ("y","n"):
     ans=input(question+" (y)(n): ").lower()
   return ans
+def userStats():
+  print("Health: "+str(userHealth))
+  print("Attack: "+str(userAttack))
+  print("Mage: "+str(userMage))
+  print("Range: "+str(userRange))
 
 print('Welcome to rpg')
-
 userClass=question('Do you want to be a Warrior, an Archer, or a Magician?','w','a','m')
 
 if userClass == 'w':
