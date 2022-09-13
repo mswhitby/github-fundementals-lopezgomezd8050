@@ -17,7 +17,10 @@ enemyInv=[]
 def enter():
   input("Press enter to continue.")
 def clr():
-    os.system('cls' if os.name=='nt' else 'clear')
+  os.system('cls' if os.name=='nt' else 'clear')
+def enterclr():
+  input("Press enter to continue.")
+  os.system('cls' if os.name=='nt' else 'clear')
 def question(question,exp1,exp2,exp3):
   ans="ans"
   while ans not in (exp1,exp2,exp3):
@@ -31,5 +34,49 @@ def yesNo(question):
 
 print('Welcome to rpg')
 
-if question('Do you want to be a Warrior, Archer, or Mage?','w','a','m')== 'w':
-  print('You picked the Warrior class')
+userClass=question('Do you want to be a Warrior, an Archer, or a Magician?','w','a','m')
+
+if userClass == 'w':
+  print('You picked the Warrior class!')
+  
+  userHealth=random.randint(100,120)
+  print("Health: "+str(userHealth))
+  
+  userAttack=random.randint(110,120)
+  print("Attack: "+str(userAttack))
+  
+  userMage=random.randint(40,50)
+  print("Mage: "+str(userMage))
+  
+  userRange=random.randint(40,50)
+  print("Range: "+str(userRange))
+elif userClass == 'a':
+  print('You picked the Archer class!')
+  
+  userHealth=random.randint(100,120)
+  print("Health: "+str(userHealth))
+  
+  userAttack=random.randint(40,50)
+  print("Attack: "+str(userAttack))
+  
+  userMage=random.randint(40,50)
+  print("Mage: "+str(userMage))
+  
+  userRange=random.randint(100,120)
+  print("Range: "+str(userRange))
+elif userClass == 'm':
+  print('You picked the Magician class!')
+  
+  userHealth=random.randint(100,120)
+  print("Health: "+str(userHealth))
+  
+  userAttack=random.randint(40,50)
+  print("Attack: "+str(userAttack))
+  
+  userMage=random.randint(100,120)
+  print("Mage: "+str(userMage))
+  
+  userRange=random.randint(40,50)
+  print("Range: "+str(userRange))
+  
+enterclr()
