@@ -1,0 +1,35 @@
+import os
+import random
+import time
+
+userHealth=0
+userAttack=0
+userMage=0
+userRange=0
+userInv=[]
+
+enemyHealth=0
+enemyAttack=0
+enemyMage=0
+enemyRange=0
+enemyInv=[]
+
+def enter():
+  input("Press enter to continue.")
+def clr():
+    os.system('cls' if os.name=='nt' else 'clear')
+def question(question,exp1,exp2,exp3):
+  ans="ans"
+  while ans not in (exp1,exp2,exp3):
+    ans=input(question+" ("+exp1+")"+"("+exp2+")"+"("+exp3+")"+": ").lower()
+  return ans
+def yesNo(question):
+  ans="ans"
+  while ans not in ("y","n"):
+    ans=input(question+" (y)(n): ").lower()
+  return ans
+
+print('Welcome to rpg')
+
+if question('Do you want to be a Warrior, Archer, or Mage?','w','a','m')== 'w':
+  print('You picked the Warrior class')
