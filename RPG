@@ -6,15 +6,28 @@ userHealth=0
 userAttack=0
 userMage=0
 userRange=0
+userLevel=0
+userExp=0
+userStatus=''
 userInv=[]
+userEquip=[]
 userStats=[]
 
 enemyHealth=0
 enemyAttack=0
 enemyMage=0
 enemyRange=0
+enemyLevel=0
+enemyStatus=''
 enemyInv=[]
+enemyEquip=[]
 enemyStats=[]
+
+location=['plains','forest','tundra','desert','mountain','mountaintop','shop']
+currentLocation=location[random.randint(0,1)]
+day=1
+money=0
+
 
 def enter():
   input("Press enter to continue.")
@@ -38,15 +51,20 @@ def userStats():
   print("Attack: "+str(userAttack))
   print("Mage: "+str(userMage))
   print("Range: "+str(userRange))
+  print("Money: "+str(money))
+  print("Level: "+str(userLevel))
+  print("Exp to next level: "+str(userExp))
+  
+
 
 print('Welcome to rpg')
-userClass=question('Do you want to be a Warrior, an Archer, or a Magician?','w','a','m')
 
+userClass=question('Do you want to be a Warrior, an Archer, or a Magician?','w','a','m')
 if userClass == 'w':
-  print('You picked the Warrior class!')
+  print('\nYou picked the Warrior class!')
   
   userHealth=random.randint(100,120)
-  print("Health: "+str(userHealth))
+  print("\nHealth: "+str(userHealth))
   
   userAttack=random.randint(110,120)
   print("Attack: "+str(userAttack))
@@ -55,12 +73,12 @@ if userClass == 'w':
   print("Mage: "+str(userMage))
   
   userRange=random.randint(40,50)
-  print("Range: "+str(userRange))
+  print("Range: "+str(userRange)+'\n')
 elif userClass == 'a':
-  print('You picked the Archer class!')
+  print('\nYou picked the Archer class!')
   
   userHealth=random.randint(100,120)
-  print("Health: "+str(userHealth))
+  print("\nHealth: "+str(userHealth))
   
   userAttack=random.randint(40,50)
   print("Attack: "+str(userAttack))
@@ -69,12 +87,12 @@ elif userClass == 'a':
   print("Mage: "+str(userMage))
   
   userRange=random.randint(100,120)
-  print("Range: "+str(userRange))
+  print("Range: "+str(userRange)+'\n')
 elif userClass == 'm':
-  print('You picked the Magician class!')
+  print('\nYou picked the Magician class!')
   
   userHealth=random.randint(100,120)
-  print("Health: "+str(userHealth))
+  print("\nHealth: "+str(userHealth))
   
   userAttack=random.randint(40,50)
   print("Attack: "+str(userAttack))
@@ -83,6 +101,12 @@ elif userClass == 'm':
   print("Mage: "+str(userMage))
   
   userRange=random.randint(40,50)
-  print("Range: "+str(userRange))
-  
+  print("Range: "+str(userRange)+'\n')
+
 enterclr()
+print("put tutorial here")
+enterclr()
+print("It is day "+str(day)+" in your journey.")
+print("You are currently in the "+currentLocation+".")
+
+
