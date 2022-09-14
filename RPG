@@ -1,12 +1,13 @@
 import os
 import random
 import time
+import math
 
 userHealth=0
 userAttack=0
 userMage=0
 userRange=0
-userLevel=0
+userLevel=1
 userExp=0
 userStatus=''
 userInv=[]
@@ -24,7 +25,7 @@ enemyEquip=[]
 enemyStats=[]
 
 location=['plains','forest','tundra','desert','mountain','mountaintop','shop']
-currentLocation=location[random.randint(0,1)]
+currentLocation=location[0]
 day=1
 money=0
 
@@ -39,7 +40,7 @@ def enterclr():
 def question(question,exp1,exp2,exp3):
   ans="ans"
   while ans not in (exp1,exp2,exp3):
-    ans=input(question+" ("+exp1+")"+"("+exp2+")"+"("+exp3+")"+": ").lower()
+    ans=input(question+"\n("+exp1+")"+"("+exp2+")"+"("+exp3+")"+": ").lower()
   return ans
 def yesNo(question):
   ans="ans"
@@ -47,18 +48,29 @@ def yesNo(question):
     ans=input(question+" (y)(n): ").lower()
   return ans
 def userStats():
-  print("Health: "+str(userHealth))
+  print("\nHealth: "+str(userHealth))
   print("Attack: "+str(userAttack))
   print("Mage: "+str(userMage))
   print("Range: "+str(userRange))
   print("Money: "+str(money))
   print("Level: "+str(userLevel))
-  print("Exp to next level: "+str(userExp))
-  
-
+  print("Exp to next level: "+str(userExp)+'\n')
+def dayCycle():
+  global day
+  print("It is day "+str(day)+" in your journey.")
+  print("You are currently in the "+currentLocation+".")
+  ans=yesNo('Would you like to check your stats?')
+  if ans == 'y':
+    userStats()
+  ans=yesNo('Would you like to explore the '+currentLocation+"?")
+  if ans == 'y':
+    print("real")
+  elif ans == 'n':
+    print('unreal')
+  day=day+1
+  enterclr()
 
 print('Welcome to rpg')
-
 userClass=question('Do you want to be a Warrior, an Archer, or a Magician?','w','a','m')
 if userClass == 'w':
   print('\nYou picked the Warrior class!')
@@ -106,7 +118,6 @@ elif userClass == 'm':
 enterclr()
 print("put tutorial here")
 enterclr()
-print("It is day "+str(day)+" in your journey.")
-print("You are currently in the "+currentLocation+".")
 
-
+while True:
+  dayCycle()
