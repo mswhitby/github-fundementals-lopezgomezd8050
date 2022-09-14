@@ -32,21 +32,26 @@ money=0
 
 def enter():
   input("Press enter to continue.")
+  
 def clr():
   os.system('cls' if os.name=='nt' else 'clear')
+  
 def enterclr():
   input("Press enter to continue to next screen.")
   os.system('cls' if os.name=='nt' else 'clear')
+  
 def question(question,exp1,exp2,exp3):
   ans="ans"
   while ans not in (exp1,exp2,exp3):
     ans=input(question+"\n("+exp1+")"+"("+exp2+")"+"("+exp3+")"+": ").lower()
   return ans
+  
 def yesNo(question):
   ans="ans"
   while ans not in ("y","n"):
     ans=input(question+" (y)(n): ").lower()
   return ans
+  
 def userStats():
   print("\nHealth: "+str(userHealth))
   print("Attack: "+str(userAttack))
@@ -55,6 +60,18 @@ def userStats():
   print("Money: "+str(money))
   print("Level: "+str(userLevel))
   print("Exp to next level: "+str(userExp)+'\n')
+
+def randomEvent(odds):
+  if odds == 0:
+    print("low odds")
+  elif odds == 1:
+    print("med odds")
+  elif odds == 2:
+    print("high odds")
+    
+def battle():
+  print('put smth here lol')
+  
 def dayCycle():
   global day
   print("It is day "+str(day)+" in your journey.")
@@ -64,11 +81,12 @@ def dayCycle():
     userStats()
   ans=yesNo('Would you like to explore the '+currentLocation+"?")
   if ans == 'y':
-    print("real")
+    randomEvent(1)
   elif ans == 'n':
-    print('unreal')
+    randomEvent(0)
   day=day+1
   enterclr()
+  
 
 print('Welcome to rpg')
 userClass=question('Do you want to be a Warrior, an Archer, or a Magician?','w','a','m')
@@ -86,6 +104,7 @@ if userClass == 'w':
   
   userRange=random.randint(40,50)
   print("Range: "+str(userRange)+'\n')
+  
 elif userClass == 'a':
   print('\nYou picked the Archer class!')
   
@@ -100,6 +119,7 @@ elif userClass == 'a':
   
   userRange=random.randint(100,120)
   print("Range: "+str(userRange)+'\n')
+  
 elif userClass == 'm':
   print('\nYou picked the Magician class!')
   
@@ -114,10 +134,11 @@ elif userClass == 'm':
   
   userRange=random.randint(40,50)
   print("Range: "+str(userRange)+'\n')
-
+  
 enterclr()
 print("put tutorial here")
 enterclr()
 
+#while like health is above 0 or smth
 while True:
   dayCycle()
