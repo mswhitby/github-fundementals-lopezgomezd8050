@@ -9,7 +9,7 @@ userMage=0
 userRange=0
 userLevel=1
 userExp=0
-userStatus=''
+userEffects=[]
 userInv=[]
 userEquip=[]
 userStats=[]
@@ -19,7 +19,7 @@ enemyAttack=0
 enemyMage=0
 enemyRange=0
 enemyLevel=0
-enemyStatus=''
+enemyEffects=[]
 enemyInv=[]
 enemyEquip=[]
 enemyStats=[]
@@ -32,10 +32,8 @@ money=0
 
 def enter():
   input("Press enter to continue.")
-  
 def clr():
   os.system('cls' if os.name=='nt' else 'clear')
-  
 def enterclr():
   input("Press enter to continue to next screen.")
   os.system('cls' if os.name=='nt' else 'clear')
@@ -57,6 +55,7 @@ def userStats():
   print("Attack: "+str(userAttack))
   print("Mage: "+str(userMage))
   print("Range: "+str(userRange))
+  print("Effects: "+str(userEffects))
   print("Money: "+str(money))
   print("Level: "+str(userLevel))
   print("Exp to next level: "+str(userExp)+'\n')
@@ -76,18 +75,23 @@ def dayCycle():
   global day
   print("It is day "+str(day)+" in your journey.")
   print("You are currently in the "+currentLocation+".")
-  ans=yesNo('Would you like to check your stats?')
-  if ans == 'y':
-    userStats()
-  ans=yesNo('Would you like to explore the '+currentLocation+"?")
-  if ans == 'y':
-    randomEvent(1)
-  elif ans == 'n':
-    randomEvent(0)
+  ans="ans"
+  
+  while ans not in ("s","i","e","d"):
+    ans=input("\nWould you like to:\n\nCheck your Stats\nCheck your Inventory\nExplore the "+currentLocation.capitalize()+"\nDont Explore the "+currentLocation.capitalize()+"\n\n(s)(i)(e)(d): ").lower()
+    if ans == "s":
+      userStats()
+      ans="ans"
+    if ans == "i":
+      print(userInv)
+      ans="ans"
+    if ans == 'e':
+      randomEvent(1)
+    if ans == 'd':
+      randomEvent(0)
   day=day+1
   enterclr()
   
-
 print('Welcome to rpg')
 userClass=question('Do you want to be a Warrior, an Archer, or a Magician?','w','a','m')
 if userClass == 'w':
