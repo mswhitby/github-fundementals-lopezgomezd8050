@@ -28,6 +28,10 @@ location=['plains','forest','tundra','desert','mountain','mountaintop','shop']
 currentLocation=location[0]
 day=1
 money=0
+luck=1
+event=0
+eventRegulator=0
+randomEvents=["battle","chest","shop","final boss"]
 
 
 def enter():
@@ -43,7 +47,6 @@ def question(question,exp1,exp2,exp3):
   while ans not in (exp1,exp2,exp3):
     ans=input(question+"\n("+exp1+")"+"("+exp2+")"+"("+exp3+")"+": ").lower()
   return ans
-  
 def yesNo(question):
   ans="ans"
   while ans not in ("y","n"):
@@ -60,17 +63,38 @@ def userStats():
   print("Level: "+str(userLevel))
   print("Exp to next level: "+str(userExp)+'\n')
 
-def randomEvent(odds):
-  if odds == 0:
-    print("low odds")
-  elif odds == 1:
-    print("med odds")
-  elif odds == 2:
-    print("high odds")
-    
 def battle():
-  print('put smth here lol')
-  
+  print('put smth here lolbattle')
+def chest():
+  print('put smth here lolchest')
+def shop():
+  print('put smth here lolshop')
+
+def randomEvent(odds):
+  global event
+  global eventRegulator
+  odds=odds*luck
+  rolls=0
+  eventRegulator=2
+  #^^^^^^ change this to randomly change based on luck or days or smth
+  for i in range(int(odds)):
+    rolls=random.randint(0,1)
+    if rolls == 1:
+      event=randomEvents[random.randint(0,eventRegulator)]
+    if event == "battle":
+      battle()
+      event=0
+    if event == "chest":
+      chest()
+      event=0
+    if event == "shop":
+      shop()
+      event=0
+    if event == "final boss":
+      print("finalbosstest")
+      event=0
+    #this code currently forces 2 events, leading to the event being repeated twice if there isnt a roll for it
+    #fixed
 def dayCycle():
   global day
   print("It is day "+str(day)+" in your journey.")
@@ -86,9 +110,9 @@ def dayCycle():
       print(userInv)
       ans="ans"
     if ans == 'e':
-      randomEvent(1)
+      randomEvent(2)
     if ans == 'd':
-      randomEvent(0)
+      randomEvent(1)
   day=day+1
   enterclr()
   
@@ -108,7 +132,6 @@ if userClass == 'w':
   
   userRange=random.randint(40,50)
   print("Range: "+str(userRange)+'\n')
-  
 elif userClass == 'a':
   print('\nYou picked the Archer class!')
   
@@ -123,7 +146,6 @@ elif userClass == 'a':
   
   userRange=random.randint(100,120)
   print("Range: "+str(userRange)+'\n')
-  
 elif userClass == 'm':
   print('\nYou picked the Magician class!')
   
