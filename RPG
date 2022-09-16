@@ -11,7 +11,7 @@ userLevel=1
 userExp=0
 userEffects=[]
 userInv=[]
-userEquip=[]
+userEquip=[]#helmet amulet chestplate platelegs
 userStats=[]
 
 enemyHealth=0
@@ -33,6 +33,10 @@ event=0
 eventRegulator=0
 randomEvents=["battle"]*6+["chest"]*1+["trapchest"]*1+["shop"]*1+["final boss"]*0#make this a variable that changes to 1 after reaching moutnaintop
 
+enemyMagic=['Undead Mage', 'Lesser Thrall']
+enemyWarrior=['Zombie','Vampire']
+enemyArcher=['Skeleton','Sharpshooter']
+enemyPool=enemyMagic+enemyWarrior+enemyArcher
 
 def enter():
   input("Press enter to continue.")
@@ -66,26 +70,33 @@ def userStats():
 
 def battle():
   enterclr()
-  print('put smth here lolbattle')
-  
+  print("A(n) "+enemyPool[random.randint(0,5)]+" drew near!")
+ 
 def chest():
   enterclr()
-  print('put smth here lolchest')
+  print('You found a Treasure Chest while exploring the '+currentLocation+'.')
+  
+  print('You got: '+'placeholder kekw')
   
 def trapChest():
   enterclr()
-  print("trapped chest")
+  print('You found a Treasure Chest while exploring the '+currentLocation+'.')
+  print('An enemy popped out trying to defend the chest!')
+  battle()
   
 def shop():
   enterclr()
-  print('put smth here lolshop')
+  print('You stumbled across a wandering trader')
+  #add the ability to attack the shop owner later but still add it
+  #make it like a mini bossfight
+  ans=question("what would you like to buy, not buy, or attack the shop owner?",'b','n','a')
   
 def finalBoss():
   print("ur gonna die pepega")
   
 def noEvent():
   enterclr()
-  print("lol you got nothing")
+  print("No event occurred.")
   
 def randomEvent(odds):
   global event
@@ -137,8 +148,8 @@ def dayCycle():
       print("\nYou venture off to explore the "+currentLocation+".\n")
       randomEvent(2)
     if ans == 'd':
-      randomEvent(1)
       print("\nYou decide not to explore the "+currentLocation+".\n")
+      randomEvent(1)
   day=day+1
   enterclr()
   
