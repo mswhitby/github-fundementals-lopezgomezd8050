@@ -24,14 +24,14 @@ enemyInv=[]
 enemyEquip=[]
 enemyStats=[]
 
-location=['plains','forest','tundra','desert','mountain','mountaintop','shop']
+location=['plains','forest','tundra','desert','mountain','mountaintop','market']
 currentLocation=location[0]
 day=1
 money=0
 luck=1
 event=0
 eventRegulator=0
-randomEvents=["battle","chest","shop","final boss"]
+randomEvents=["battle"]*6+["chest"]*1+["trapchest"]*1+["shop"]*1+["final boss"]*0#make this a variable that changes to 1 after reaching moutnaintop
 
 
 def enter():
@@ -63,36 +63,59 @@ def userStats():
   print("Level: "+str(userLevel))
   print("Exp to next level: "+str(userExp)+'\n')
 
-def battle():
-  print('put smth here lolbattle')
-def chest():
-  print('put smth here lolchest')
-def shop():
-  print('put smth here lolshop')
 
+def battle():
+  enterclr()
+  print('put smth here lolbattle')
+  
+def chest():
+  enterclr()
+  print('put smth here lolchest')
+  
+def trapChest():
+  enterclr()
+  print("trapped chest")
+  
+def shop():
+  enterclr()
+  print('put smth here lolshop')
+  
+def finalBoss():
+  print("ur gonna die pepega")
+  
+def noEvent():
+  enterclr()
+  print("lol you got nothing")
+  
 def randomEvent(odds):
   global event
   global eventRegulator
   odds=odds*luck
   rolls=0
-  eventRegulator=2
+  eventRegulator=8
   #^^^^^^ change this to randomly change based on luck or days or smth
   for i in range(int(odds)):
     rolls=random.randint(0,1)
     if rolls == 1:
       event=randomEvents[random.randint(0,eventRegulator)]
-    if event == "battle":
-      battle()
-      event=0
-    if event == "chest":
-      chest()
-      event=0
-    if event == "shop":
-      shop()
-      event=0
-    if event == "final boss":
-      print("finalbosstest")
-      event=0
+      if event == "battle":
+        battle()
+        event=0
+      if event == "chest":
+        chest()
+        event=0
+      if event == "trapchest":
+        trapChest()
+        event=0
+      if event == "shop":
+        shop()
+        event=0
+      if event == "final boss":
+        finalBoss()
+        event=0
+    elif rolls==0:
+      noEvent()
+    
     #this code currently forces 2 events, leading to the event being repeated twice if there isnt a roll for it
     #fixed
 def dayCycle():
@@ -107,12 +130,15 @@ def dayCycle():
       userStats()
       ans="ans"
     if ans == "i":
+      print("\n")
       print(userInv)
       ans="ans"
     if ans == 'e':
+      print("\nYou venture off to explore the "+currentLocation+".\n")
       randomEvent(2)
     if ans == 'd':
       randomEvent(1)
+      print("\nYou decide not to explore the "+currentLocation+".\n")
   day=day+1
   enterclr()
   
