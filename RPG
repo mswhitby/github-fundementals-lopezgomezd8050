@@ -84,9 +84,9 @@ def userStats():
 
 def equipMenu():
   ans='ans'
-  print('Current Equipment:\n'+ userEquip)
+  print('Current Equipment:\n'+ userEquip[0])#work on this tmrw
   while ans not in ('h','c','p','a','w'):
-    print('abc')    
+    ans=input('abc')    
 def lootTable():
   lootGotten="abc"
   if currentLocation=="plains":
