@@ -1,0 +1,8 @@
+import random
+odds=5
+for i in range(int(odds)):
+    rolls=random.randint(0,1)
+    if rolls == 1:
+      print("event hit")
+    elif rolls==0:
+      print("event miss")
