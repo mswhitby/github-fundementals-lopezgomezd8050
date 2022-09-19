@@ -214,6 +214,10 @@ def randomEvent(odds):
     #fixed
     
 def tutorial():
+  global userHealth
+  global userAttack
+  global userMage
+  global userRange
   print('Welcome to rpg')
   userClass=question('Do you want to be a Warrior, an Archer, or a Magician?','w','a','m')
   if userClass == 'w':
