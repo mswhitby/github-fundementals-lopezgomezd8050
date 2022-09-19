@@ -10,7 +10,7 @@ userRange=0
 userLevel=1
 userEffects=[]
 userInv=[]
-userEquip=[]#helmet amulet chestplate platelegs
+userEquip=['helmet','chestplate','platelegs','amulet','weapon']#helmet amulet chestplate platelegs weapon
 userStats=[]
 
 enemyHealth=0
@@ -42,6 +42,7 @@ t3Armor=['t3helm','t3chest','t3legs']
 t4Armor=['t4helm','t4chest','t4legs']
 t5Armor=['t5helm','t5chest','t5legs']
 amulets=['1tamu','2tamu','3tamu','4tamu','glory']
+weapons=['t1sword','t2sword','t3sword','t1staff','t2staff','t3staff','t1bow','t2bow','t3bow']
 #make like 1 be health then 2 be attack then mage then archer then 5 just be like an amulet of glory
 #or make the amulets benifiti the area and glory could be like combine all of em
 rdt=t1Armor+t2Armor+t3Armor+t4Armor+t5Armor+amulets
@@ -81,6 +82,11 @@ def userStats():
   print("Level: "+str(userLevel))
   print("Exp to next level: "+str(exp)+'\n')
 
+def equipMenu():
+  ans='ans'
+  print('Current Equipment:\n'+ userEquip)
+  while ans not in ('h','c','p','a','w'):
+    print('abc')    
 def lootTable():
   lootGotten="abc"
   if currentLocation=="plains":
@@ -271,13 +277,13 @@ def dayCycle():
   global day
   tutorial()
   #while like health is above 0 or smth
-  while True:
+  while userHealth>0:
     print("It is day "+str(day)+" in your journey.")
     print("You are currently in the "+currentLocation+".")
     ans="ans"
     
-    while ans not in ("s","i","e","d"):
-      ans=input("\nWould you like to:\n\nCheck your Stats\nCheck your Inventory\nExplore the "+currentLocation.capitalize()+"\nDont Explore the "+currentLocation.capitalize()+"\n\n(s)(i)(e)(d): ").lower()
+    while ans not in ("s","i","e","d","a"):
+      ans=input("\nWould you like to:\n\nCheck your Stats\nCheck your Inventory\nEquip Armor\nExplore the "+currentLocation.capitalize()+"\nDont Explore the "+currentLocation.capitalize()+"\n\n(s)(i)(a)(e)(d): ").lower()
       if ans == "s":
         userStats()
         ans="ans"
@@ -291,7 +297,12 @@ def dayCycle():
       if ans == 'd':
         print("\nYou decide not to explore the "+currentLocation+".\n")
         randomEvent(1)
+      if ans == 'a':
+        equipMenu()
+        ans="ans"
     day=day+1
     enterclr()
-
+  clr()
+  print("You died!")
+  print("You lasted "+day+"days.")
 dayCycle()
