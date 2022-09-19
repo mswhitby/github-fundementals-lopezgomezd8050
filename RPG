@@ -82,20 +82,24 @@ def userStats():
   print("Exp to next level: "+str(exp)+'\n')
 
 def lootTable():
+  lootGotten="abc"
   if currentLocation=="plains":
-    return random.choice(t1Armor)#and 2
+    lootGotten=random.choice(t1Armor)#and 2
   elif currentLocation=="forest":
-    return random.choice(t2Armor)#and 3
+    lootGotten=random.choice(t2Armor)#and 3
   elif currentLocation=="desert":
-    return random.choice(t3Armor)#and 4
+    lootGotten=random.choice(t3Armor)#and 4
   elif currentLocation=="tundra":
-    return random.choice(t4Armor)#and 5
+    lootGotten=random.choice(t4Armor)#and 5
   elif currentLocation=="mountain":
-    return random.choice(t5Armor)#mostly 5
+    lootGotten=random.choice(t5Armor)#mostly 5
   elif currentLocation=="mountaintop":
-    return random.choice(t5Armor)#just 5 or we could add god armor or smth
+    lootGotten=random.choice(t5Armor)#just 5 or we could add god armor or smth
+  userInv.append(lootGotten)
+  return lootGotten
 
 #nerf this hard its too op
+#but balancing updates are like the last thing needed lol
 def loot(source):
   global eventRegulator
   if source == 'battle':
